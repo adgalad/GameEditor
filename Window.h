@@ -18,7 +18,7 @@
 
 std::string path = "/Users/carlosspaggiari/Desktop/Game/Resource/";
 
-std::string path2 = "/Users/carlosspaggiari/Desktop/Game 2/Resource/";
+std::string path2 = "/Users/carlosspaggiari/Desktop/GameEditor/Resource/";
 #define NullTile = 0
 
 const int mapx=200,mapy=200;
@@ -27,16 +27,17 @@ const int mapx=200,mapy=200;
 class Window
 {
 public:
-    SDL_Surface *MainWindow,*MousePointer,*Barra,*botones;
+    SDL_Surface *MainWindow,*MousePointer,*Barra,*botones,*fondo,*scroll;
     int w,h;
     bool FullScreen;
     bool running;
     int currentTile,maxTile;
     int tool;
     std::vector<int> black[mapx+2][mapy+2];
-    int x,y;
+    int x,y,fondoX,fondoY,fondoPos;
     int pallet;
     int pallettam;
+    int win;
     
     int objectsBegin;
 
@@ -51,18 +52,29 @@ public:
     void Fread();
 };
 
+
+
+
 Window::Window()
 {
     FullScreen = false;
     MousePointer = NULL;
     MainWindow = NULL;
+    fondo = NULL;
+    scroll = NULL;
+    botones = NULL;
+    Barra = NULL;
     running = true;
     currentTile = 1;
-    x=1;
-    y=1;
+    x=-8;
+    y=-1;
+    fondoX = 16;
+    fondoY = 96;
+    fondoPos = 0;
     pallet=1;
     pallettam = 1;
     tool =1;
+    win = 0;
     objectsBegin = 9;
 }
 
@@ -176,9 +188,14 @@ bool Window::OnInit()
     botones = Csurface::OnLoad(&img[0]);
     img = path+"tiles1.png";
     MousePointer = Csurface::OnLoad(&img[0]);
-    // MousePointer = IMG_Load(&img[0]);
+    img = path2+"fondo.png";
+    fondo = Csurface::OnLoad(&img[0]);
+    
     Csurface::Transparent(MousePointer, 255, 100, 200);
     Csurface::Transparent(MousePointer, 255, 100, 200);
+    Csurface::Transparent(Barra, 255, 100, 200);
+    //SDL_SetColorKey(fondo, SDL_SRCCOLORKEY | SDL_RLEACCEL, SDL_MapRGB(fondo->format, 255, 100, 200));
+    
     maxTile = (MousePointer->h/32 +1) * (MousePointer->w-32)/32 ;
     printf(" %d" ,maxTile);
     /* Enable Key Repeat */
@@ -200,30 +217,42 @@ void Window::OnCleanup()
 
 bool Window::OnEvent(SDL_Event *Event)
 {
+    if ( Event->motion.y > 68 && Event->motion.y < h-160-16 && Event->motion.x > 288 && Event->motion.x < w-16 )
+        win = 0;
     switch (Event->type) {
-            
+
         case SDL_KEYDOWN:
             switch (Event->key.keysym.sym) {
                     
                 case SDLK_RIGHT:
-                    if (x < mapx-33) {
+                    if (x < mapx-40 && !win) {
                         x++;
                     }
                     break;
                 case SDLK_LEFT:
-                    if (x > 1) {
+                    if (x > -8 && !win) {
                         x--;
                     }
                     break;
                 case SDLK_DOWN :
-                    if (y < mapy-41) {
+                    if (y < mapy-41 && !win) {
                         y++;
                     }
+                    else if(fondoPos/35 > -maxTile/6+18 && win)
+                        {
+                        fondoPos-=4;
+
+                        }
                     break;
                 case SDLK_UP:
-                    if (y > -1) {
+                    if (y > -1 && !win) {
                         y--;
+
                     }
+                    else if(fondoPos !=0 && win)
+                        {
+                        fondoPos+=4;
+                        }
                     break;
                 default:
                     if (Event->key.keysym.unicode == 'm')
@@ -290,7 +319,7 @@ bool Window::OnEvent(SDL_Event *Event)
             }
             else if (Event->button.button == SDL_BUTTON_LEFT)
                 {
-                if (Event->motion.y > 64 )
+                if (Event->motion.y > 64 && Event->motion.x > 288 )
                     {
                     if (tool == 1)
                         {
@@ -298,7 +327,11 @@ bool Window::OnEvent(SDL_Event *Event)
                             {
                             for(int i=0;i<pallettam;i++)
                                 for(int j=0;j<pallettam;j++)
-                                    black[y+Event->motion.y/32+j][x+Event->motion.x/32+i][0]=currentTile;
+                                    if ( Event->motion.y + j*32 < h - 160 && Event->motion.y + j*32 > 64 &&
+                                         Event->motion.x + j*32 < w && Event->motion.x + j*32 > 288)
+                                        {
+                                        black[y+Event->motion.y/32+j][x+Event->motion.x/32+i][0]=currentTile;
+                                        }
                             }
                         else
                             {
@@ -311,19 +344,20 @@ bool Window::OnEvent(SDL_Event *Event)
                         }
                     else
                         {
+
                         currentTile= black[y+Event->motion.y/32][x+Event->motion.x/32].back();
                         pallet = 1;
                         pallettam = 1;
                         if (black[y+Event->motion.y/32][x+Event->motion.x/32].size() > 1)
                             black[y+Event->motion.y/32][x+Event->motion.x/32].pop_back();
                         else if (black[y+Event->motion.y/32][x+Event->motion.x/32].size() == 1)
-                            black[y+Event->motion.y/32][x+Event->motion.x/32][0] = 0;
+                                 black[y+Event->motion.y/32][x+Event->motion.x/32][0] = 0;
                         tool =1;
-                        printf(" %d %d \n",Event->motion.x/32,Event->motion.y/32);
+   
                         
                         }
                     }
-                else if ( Event->motion.y > 6)
+                else if ( Event->motion.y > 3 && Event->motion.y < 64)
                     {
                     if (Event->motion.x >60  && Event->motion.x < 120)
                         {
@@ -354,8 +388,13 @@ bool Window::OnEvent(SDL_Event *Event)
                         tool = 2;
                         }
                     }
+                else if ( Event->motion.y > 99  && Event->motion.x > 32)
+                {
+                    win = 1;
+                    currentTile = 6*((Event->motion.y - 99)/35) + (Event->motion.x - 32)/35;
+                
                 }
-
+            }
             break;
         case SDL_QUIT:
             running =false;
@@ -368,14 +407,29 @@ bool Window::OnEvent(SDL_Event *Event)
 
 bool Window::OnLoop(SDL_Event *Event)
 {
-    for (int i = 0; i<40 ;i++)
-        for(int j=2 ; j<32; j++)
+    for (int i = 9; i<40 ;i++)
+        for(int j = 2 ; j<32; j++)
             for (int k= 0; k< black[y+j][x+i].size();k++)
                 {
                 int      Id = black[y+j][x+i][k];
                 Csurface::OnDraw(MainWindow, MousePointer, i*32, j*32,32*(Id%10),32*(Id/10),32,32);
                 
                 }
+    Csurface::OnDraw(MainWindow,fondo,fondoX,fondoY);
+    int i,j,Id;
+    i = j = Id =0;
+    j=0;
+    while (Id < maxTile)
+        {
+        Id = j*6+i;
+        Csurface::OnDraw(MainWindow, MousePointer, i*35+32, fondoPos+j*35+99,32*(Id%10),32*(Id/10),32,32);
+        i++;
+        if ( i == 6)
+            {
+            i=0;
+            j++;
+            }
+        }
     Csurface::OnDraw(MainWindow, Barra, 0, 0);
     for(int i=0;i<4;i++)
             if (i+1 != pallet)
@@ -391,7 +445,7 @@ bool Window::OnLoop(SDL_Event *Event)
     
 
     
-    if ( Event->motion.y > 68 && Event->motion.y < h-32-32 && Event->motion.x > 0 && Event->motion.x < w-32 && tool == 1)
+    if ( Event->motion.y > 68 && Event->motion.y < h-160-16 && Event->motion.x > 288 && Event->motion.x < w-16 && tool == 1)
     {
 
         for(int i=0;i<pallettam;i++)

@@ -227,12 +227,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/carlosspaggiari,
+					/Users/carlosspaggiari/SDL_ttf.framework/Versions/A/Frameworks,
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HelloSDL/HelloSDL-Prefix.pch";
 				INFOPLIST_FILE = "HelloSDL/HelloSDL-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -248,11 +250,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/carlosspaggiari,
+					/Users/carlosspaggiari/SDL_ttf.framework/Versions/A/Frameworks,
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HelloSDL/HelloSDL-Prefix.pch";
 				INFOPLIST_FILE = "HelloSDL/HelloSDL-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
