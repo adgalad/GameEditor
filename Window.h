@@ -6,42 +6,60 @@
 //  Copyright (c) 2014 Student. All rights reserved.
 //
 
-#include <cstdlib>
-#include <SDL/SDL.h>
-#include <SDL/SDL_opengl.h>
-#include "Surface.h"
-#include <fstream>
-#include <vector>
+
 #ifndef HelloSDL_Window_h
 #define HelloSDL_Window_h
 
 
-std::string path = "/Users/carlosspaggiari/Desktop/Game/Resource/";
 
-std::string path2 = "/Users/carlosspaggiari/Desktop/GameEditor/Resource/";
+#include "class_windows.h"
+
+
+std::string path = "/Users/carlosspaggiari/Desktop/C-C++/PROYECTOS/Juego_SDL/Game/Resource/";
+
+std::string path2 = "/Users/carlosspaggiari/Desktop/C-C++/PROYECTOS/Juego_SDL/GameEditor/Resource/";
 #define NullTile = 0
 
 const int mapx=200,mapy=200;
+int abs(int a)
+{
+    if (a < 0)
+        return -a;
+    return a;
+}
 
-
-class Window
+class Editor
 {
 public:
-    SDL_Surface *MainWindow,*MousePointer,*Barra,*botones,*fondo,*scroll;
-    int w,h;
-    bool FullScreen;
-    bool running;
-    int currentTile,maxTile;
-    int tool;
-    std::vector<int> black[mapx+2][mapy+2];
-    int x,y,fondoX,fondoY,fondoPos;
-    int pallet;
-    int pallettam;
-    int win;
+    SDL_Surface *MainWindow,    // Main window of editor
+    			*MousePointer,  // Auxiliar surface for tiles
+                *Barra,
+    			*botones,
+    			*fondo,
+    			*scroll;
+    int w, // Width of screen
+        h, // Higth of screen
+    	x,
+    	y,
+        fondoX,
+        fondoY,
+        fondoPos,
+        pallet,
+        pallettam,
+        win,
+        currentTile,
+        maxTile,
+        tool;
+    
+    bool FullScreen,
+    	 running;
+
+    std::vector<int> MapSquares[mapx+2][mapy+2];
+
     
     int objectsBegin;
 
-    Window();
+    Editor();
     bool OnInit();
     bool OnExecute();
     void OnCleanup();
@@ -55,31 +73,31 @@ public:
 
 
 
-Window::Window()
+Editor::Editor()
 {
-    FullScreen = false;
+    FullScreen   = false;
     MousePointer = NULL;
-    MainWindow = NULL;
-    fondo = NULL;
-    scroll = NULL;
-    botones = NULL;
-    Barra = NULL;
-    running = true;
-    currentTile = 1;
-    x=-8;
-    y=-1;
-    fondoX = 16;
-    fondoY = 96;
-    fondoPos = 0;
-    pallet=1;
-    pallettam = 1;
-    tool =1;
-    win = 0;
+    MainWindow   = NULL;
+    fondo        = NULL;
+    scroll       = NULL;
+    botones      = NULL;
+    Barra        = NULL;
+    running      = true;
+    currentTile  = 1;
+    x            = -8;
+    y            = -1;
+    fondoX       = 16;
+    fondoY       = 96;
+    fondoPos     = 0;
+    pallet       = 1;
+    pallettam    = 1;
+    tool         = 1;
+    win          = 0;
     objectsBegin = 9;
 }
 
 
-void Window::Fread()
+void Editor::Fread()
 {
     std::string file = path+"save.map";
     FILE *save = fopen(&file[0], "r");
@@ -105,7 +123,7 @@ void Window::Fread()
                         hasNext = false;
                     }
                 fscanf(save,"%d ",&aux);
-                black[i][j]=tempVec;
+                MapSquares[i][j]=tempVec;
             
             }
             
@@ -118,12 +136,12 @@ void Window::Fread()
         t.push_back(0);
         for(int i=0;i<mapy;i++)
             for (int j=0; j <mapx; j++)
-                black[i][j] = t;
+                MapSquares[i][j] = t;
 
         }
 }
 
-bool Window::Fwrite()
+bool Editor::Fwrite()
 {
     
     std::string File;
@@ -137,16 +155,16 @@ bool Window::Fwrite()
             {
             std::string str = "";
             bool block = false;
-            for (int k = 0; k< black[i][j].size() ; k++)
+            for (int k = 0; k< MapSquares[i][j].size() ; k++)
                 {
-                int Id = black[i][j][k];
+                int Id = MapSquares[i][j][k];
                 if (Id == 0){
                     str = "0";
                     block = true;
                     break;
                 }
                 str = str+ std::to_string(Id);
-                if (k+1 != black[i][j].size())
+                if (k+1 != MapSquares[i][j].size())
                     str = str +"-";
                 if (Id >= objectsBegin) {
                     block = true;
@@ -162,7 +180,7 @@ bool Window::Fwrite()
     return true;
 }
 
-bool Window::OnInit()
+bool Editor::OnInit()
 {
     /* Init SDL */
     if(SDL_Init(SDL_INIT_EVERYTHING) < 0)
@@ -209,13 +227,13 @@ bool Window::OnInit()
     
 }
 
-void Window::OnCleanup()
+void Editor::OnCleanup()
 {
     SDL_FreeSurface(MainWindow);
 
 }
 
-bool Window::OnEvent(SDL_Event *Event)
+bool Editor::OnEvent(SDL_Event *Event)
 {
     if ( Event->motion.y > 68 && Event->motion.y < h-160-16 && Event->motion.x > 288 && Event->motion.x < w-16 )
         win = 0;
@@ -306,15 +324,12 @@ bool Window::OnEvent(SDL_Event *Event)
         case SDL_KEYUP:
             break;
         case SDL_MOUSEBUTTONDOWN:
-            
-
-
             if (Event->button.button == SDL_BUTTON_RIGHT) {
                 
-                    if (black[y+Event->motion.y/32][x+Event->motion.x/32].size() > 1)
-                        black[y+Event->motion.y/32][x+Event->motion.x/32].pop_back();
-                    else if (black[y+Event->motion.y/32][x+Event->motion.x/32].size() == 1)
-                        black[y+Event->motion.y/32][x+Event->motion.x/32][0] = 0;
+                    if (MapSquares[y+Event->motion.y/32][x+Event->motion.x/32].size() > 1)
+                        MapSquares[y+Event->motion.y/32][x+Event->motion.x/32].pop_back();
+                    else if (MapSquares[y+Event->motion.y/32][x+Event->motion.x/32].size() == 1)
+                        MapSquares[y+Event->motion.y/32][x+Event->motion.x/32][0] = 0;
  
             }
             else if (Event->button.button == SDL_BUTTON_LEFT)
@@ -330,14 +345,14 @@ bool Window::OnEvent(SDL_Event *Event)
                                     if ( Event->motion.y + j*32 < h - 160 && Event->motion.y + j*32 > 64 &&
                                          Event->motion.x + j*32 < w && Event->motion.x + j*32 > 288)
                                         {
-                                        black[y+Event->motion.y/32+j][x+Event->motion.x/32+i][0]=currentTile;
+                                        MapSquares[y+Event->motion.y/32+j][x+Event->motion.x/32+i][0]=currentTile;
                                         }
                             }
                         else
                             {
                             for(int i=0;i<pallettam;i++)
                                 for(int j=0;j<pallettam;j++)
-                                    black[y+Event->motion.y/32+j][x+Event->motion.x/32+i].push_back(currentTile);
+                                    MapSquares[y+Event->motion.y/32+j][x+Event->motion.x/32+i].push_back(currentTile);
                             
                             }
                     
@@ -345,13 +360,13 @@ bool Window::OnEvent(SDL_Event *Event)
                     else
                         {
 
-                        currentTile= black[y+Event->motion.y/32][x+Event->motion.x/32].back();
+                        currentTile= MapSquares[y+Event->motion.y/32][x+Event->motion.x/32].back();
                         pallet = 1;
                         pallettam = 1;
-                        if (black[y+Event->motion.y/32][x+Event->motion.x/32].size() > 1)
-                            black[y+Event->motion.y/32][x+Event->motion.x/32].pop_back();
-                        else if (black[y+Event->motion.y/32][x+Event->motion.x/32].size() == 1)
-                                 black[y+Event->motion.y/32][x+Event->motion.x/32][0] = 0;
+                        if (MapSquares[y+Event->motion.y/32][x+Event->motion.x/32].size() > 1)
+                            MapSquares[y+Event->motion.y/32][x+Event->motion.x/32].pop_back();
+                        else if (MapSquares[y+Event->motion.y/32][x+Event->motion.x/32].size() == 1)
+                                 MapSquares[y+Event->motion.y/32][x+Event->motion.x/32][0] = 0;
                         tool =1;
    
                         
@@ -405,13 +420,19 @@ bool Window::OnEvent(SDL_Event *Event)
     return true;
 }
 
-bool Window::OnLoop(SDL_Event *Event)
+bool Editor::OnLoop(SDL_Event *Event)
+{
+   
+    return true;
+}
+
+bool Editor::OnRender(SDL_Event *Event)
 {
     for (int i = 9; i<40 ;i++)
         for(int j = 2 ; j<32; j++)
-            for (int k= 0; k< black[y+j][x+i].size();k++)
+            for (int k= 0; k< MapSquares[y+j][x+i].size();k++)
                 {
-                int      Id = black[y+j][x+i][k];
+                int      Id = MapSquares[y+j][x+i][k];
                 Csurface::OnDraw(MainWindow, MousePointer, i*32, j*32,32*(Id%10),32*(Id/10),32,32);
                 
                 }
@@ -419,6 +440,8 @@ bool Window::OnLoop(SDL_Event *Event)
     int i,j,Id;
     i = j = Id =0;
     j=0;
+    
+    //** render the tiles on the left side window
     while (Id < maxTile)
         {
         Id = j*6+i;
@@ -430,12 +453,24 @@ bool Window::OnLoop(SDL_Event *Event)
             j++;
             }
         }
+    //** Render the tiles of the pointer
+    if ( Event->motion.y > 68 && Event->motion.y < h-160-16 && Event->motion.x > 288 && Event->motion.x < w-16 && tool == 1)
+    {
+        
+        for(int i=0;i<pallettam;i++)
+            for(int j=0;j<pallettam;j++){
+                Csurface::OnDraw( MainWindow , MousePointer , Event->motion.x+i*32-12 ,
+                                 Event->motion.y+j*32-12, 32*(currentTile%10) , 32*(currentTile/10) , 32 , 32 );
+            }
+    }
+	
+    //** Render Bottoms and
     Csurface::OnDraw(MainWindow, Barra, 0, 0);
     for(int i=0;i<4;i++)
-            if (i+1 != pallet)
-                Csurface::OnDraw(MainWindow, botones, 60+i*60, 2,i*55,0,55,55);
-            else
-                Csurface::OnDraw(MainWindow, botones, 60+i*60, 2,i*55,55,55,55);
+        if (i+1 != pallet)
+            Csurface::OnDraw(MainWindow, botones, 60+i*60, 2,i*55,0,55,55);
+        else
+            Csurface::OnDraw(MainWindow, botones, 60+i*60, 2,i*55,55,55,55);
     
     for(int i=0;i<4;i++)
         if (i+1 != tool)
@@ -443,40 +478,29 @@ bool Window::OnLoop(SDL_Event *Event)
         else
             Csurface::OnDraw(MainWindow, botones, 360+i*60, 2,220+i*55,55,55,55);
     
-
     
-    if ( Event->motion.y > 68 && Event->motion.y < h-160-16 && Event->motion.x > 288 && Event->motion.x < w-16 && tool == 1)
-    {
-
-        for(int i=0;i<pallettam;i++)
-            for(int j=0;j<pallettam;j++){
-
-                Csurface::OnDraw( MainWindow , MousePointer , Event->motion.x+i*32-12 ,
-                                 Event->motion.y+j*32-12, 32*(currentTile%10) , 32*(currentTile/10) , 32 , 32 );
-                
-            }
-    }
-
-    return true;
-}
-
-bool Window::OnRender(SDL_Event *Event)
-{
+    //** Render the secondary windows
+    for (int i = 0; i<Window::windowList.size();i++)
+        Window::windowList[i].OnRender(MainWindow);
+    
+    //** draw the final surface "MainWindow" on the screen
     SDL_Flip(MainWindow);
     return true;
 }
 
-bool Window::OnExecute()
+bool Editor::OnExecute()
 {
     SDL_Event Event;
 
-
     while (running) {
-        while (SDL_PollEvent(&Event)) {
-            OnEvent(&Event);
-        }
-        OnLoop(&Event);
-        OnRender(&Event);
+           while (SDL_PollEvent(&Event)) {
+                   OnEvent(&Event);
+                }
+          OnLoop(&Event);
+        printf(" %i, %i \n",Event.motion.x,Event.motion.y);
+          OnRender(&Event);
+        
+        
     }
     return true;
 }

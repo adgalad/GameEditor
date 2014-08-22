@@ -5,17 +5,20 @@
 //  Created by Carlos Spaggiari on 4/22/14.
 //  Copyright (c) 2014 Student. All rights reserved.
 //
+
+
+
+#ifndef HelloSDL_Surface_h
+#define HelloSDL_Surface_h
+
 #include <stdlib.h>
 #include <SDL/SDL.h>
 #include "SDL_image/SDL_image.h"
 #include <SDL/SDL_opengl.h>
 #include <string>
+#include <fstream>
 #include <iostream>
-
-#ifndef HelloSDL_Surface_h
-#define HelloSDL_Surface_h
-
-
+#include <vector>
 
 
 class Csurface
@@ -58,7 +61,7 @@ bool Csurface::OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int 
     
     DestR.x = X;
     DestR.y = Y;
-    
+   
     SDL_BlitSurface(Surf_Src, NULL, Surf_Dest, &DestR);
     
     return true;
@@ -81,7 +84,6 @@ bool Csurface::OnDraw(SDL_Surface *Surf_Dest, SDL_Surface *Surf_Src, int X, int 
     SrcR.y = Y2;
     SrcR.w = W;
     SrcR.h = H;
-    
     SDL_BlitSurface(Surf_Src, &SrcR, Surf_Dest, &DestR);
     
     return true;

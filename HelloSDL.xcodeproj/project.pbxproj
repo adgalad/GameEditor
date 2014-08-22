@@ -8,22 +8,41 @@
 
 /* Begin PBXBuildFile section */
 		0705E87F1912080800901C42 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0705E8761912080800901C42 /* main.cpp */; };
-		072C8B271907527100E324D4 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072C8B261907527100E324D4 /* SDL.framework */; };
 		072C8B2E1907683C00E324D4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C93E3BA13942F620096FAB3 /* OpenGL.framework */; };
 		075EB04F1910AB5D00A637C2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075EB04E1910AB5D00A637C2 /* Cocoa.framework */; };
-		075EB0511910AB6900A637C2 /* SDL_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075EB0501910AB6900A637C2 /* SDL_image.framework */; };
 		075EB05F1910AB9A00A637C2 /* HelloSDLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EB0581910AB9A00A637C2 /* HelloSDLAppDelegate.m */; };
 		075EB0601910AB9A00A637C2 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EB05A1910AB9A00A637C2 /* SDLMain.m */; };
 		075EB0611910AB9A00A637C2 /* trash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 075EB05B1910AB9A00A637C2 /* trash.cpp */; };
+		078333EC1943EE2B0056FF3E /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 078333D71943EE2B0056FF3E /* 1.png */; };
+		078333ED1943EE2B0056FF3E /* 1.area in Resources */ = {isa = PBXBuildFile; fileRef = 078333D81943EE2B0056FF3E /* 1.area */; };
+		078333EE1943EE2B0056FF3E /* 1.map in Resources */ = {isa = PBXBuildFile; fileRef = 078333D91943EE2B0056FF3E /* 1.map */; };
+		078333EF1943EE2B0056FF3E /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 078333DA1943EE2B0056FF3E /* 2.png */; };
+		078333F01943EE2B0056FF3E /* botones.png in Resources */ = {isa = PBXBuildFile; fileRef = 078333DB1943EE2B0056FF3E /* botones.png */; };
+		078333F11943EE2B0056FF3E /* Brure.png in Resources */ = {isa = PBXBuildFile; fileRef = 078333DC1943EE2B0056FF3E /* Brure.png */; };
+		078333F21943EE2B0056FF3E /* Chara.png in Resources */ = {isa = PBXBuildFile; fileRef = 078333DD1943EE2B0056FF3E /* Chara.png */; };
+		078333F31943EE2B0056FF3E /* editor copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 078333DE1943EE2B0056FF3E /* editor copy.png */; };
+		078333F41943EE2B0056FF3E /* editor.png in Resources */ = {isa = PBXBuildFile; fileRef = 078333DF1943EE2B0056FF3E /* editor.png */; };
+		078333F51943EE2B0056FF3E /* editorFull.png in Resources */ = {isa = PBXBuildFile; fileRef = 078333E01943EE2B0056FF3E /* editorFull.png */; };
+		078333F61943EE2B0056FF3E /* Efis.png in Resources */ = {isa = PBXBuildFile; fileRef = 078333E11943EE2B0056FF3E /* Efis.png */; };
+		078333F71943EE2B0056FF3E /* Fira.png in Resources */ = {isa = PBXBuildFile; fileRef = 078333E21943EE2B0056FF3E /* Fira.png */; };
+		078333F81943EE2B0056FF3E /* fondo.png in Resources */ = {isa = PBXBuildFile; fileRef = 078333E31943EE2B0056FF3E /* fondo.png */; };
+		078333F91943EE2B0056FF3E /* interfaz.fla in Resources */ = {isa = PBXBuildFile; fileRef = 078333E41943EE2B0056FF3E /* interfaz.fla */; };
+		078333FA1943EE2B0056FF3E /* maximize.png in Resources */ = {isa = PBXBuildFile; fileRef = 078333E51943EE2B0056FF3E /* maximize.png */; };
+		078333FB1943EE2B0056FF3E /* minimize.png in Resources */ = {isa = PBXBuildFile; fileRef = 078333E61943EE2B0056FF3E /* minimize.png */; };
+		078333FC1943EE2B0056FF3E /* quit.png in Resources */ = {isa = PBXBuildFile; fileRef = 078333E71943EE2B0056FF3E /* quit.png */; };
+		078333FD1943EE2B0056FF3E /* titleBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 078333E81943EE2B0056FF3E /* titleBar.png */; };
+		078333FE1943EE2B0056FF3E /* win.png in Resources */ = {isa = PBXBuildFile; fileRef = 078333E91943EE2B0056FF3E /* win.png */; };
+		078333FF1943EE2B0056FF3E /* yoshi.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 078333EA1943EE2B0056FF3E /* yoshi.bmp */; };
+		078334001943EE2B0056FF3E /* yoshi.png in Resources */ = {isa = PBXBuildFile; fileRef = 078333EB1943EE2B0056FF3E /* yoshi.png */; };
+		07C0058A193EB4BC009B1490 /* SDL_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C00588193EB4BC009B1490 /* SDL_image.framework */; };
+		07C0058B193EB4BC009B1490 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C00589193EB4BC009B1490 /* SDL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0705E8761912080800901C42 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Headers/main.cpp; sourceTree = "<group>"; };
 		0721AE6419151F0700FD551D /* Window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
 		0721AE6519152FB500FD551D /* Surface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Surface.h; path = Headers/Surface.h; sourceTree = "<group>"; };
-		072C8B261907527100E324D4 /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = ../../SDL.framework; sourceTree = "<group>"; };
 		075EB04E1910AB5D00A637C2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		075EB0501910AB6900A637C2 /* SDL_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_image.framework; path = ../../SDL_image.framework; sourceTree = "<group>"; };
 		075EB0541910AB9A00A637C2 /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = en.lproj; path = HelloSDL/en.lproj; sourceTree = "<group>"; };
 		075EB0551910AB9A00A637C2 /* HelloSDL-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "HelloSDL-Info.plist"; path = "HelloSDL/HelloSDL-Info.plist"; sourceTree = "<group>"; };
 		075EB0561910AB9A00A637C2 /* HelloSDL-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HelloSDL-Prefix.pch"; path = "HelloSDL/HelloSDL-Prefix.pch"; sourceTree = "<group>"; };
@@ -33,6 +52,30 @@
 		075EB05A1910AB9A00A637C2 /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDLMain.m; path = HelloSDL/SDLMain.m; sourceTree = "<group>"; };
 		075EB05B1910AB9A00A637C2 /* trash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = trash.cpp; path = HelloSDL/trash.cpp; sourceTree = "<group>"; };
 		075EB05C1910AB9A00A637C2 /* trash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = trash.h; path = HelloSDL/trash.h; sourceTree = "<group>"; };
+		078333D71943EE2B0056FF3E /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = Resource/1.png; sourceTree = "<group>"; };
+		078333D81943EE2B0056FF3E /* 1.area */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 1.area; path = Resource/1.area; sourceTree = "<group>"; };
+		078333D91943EE2B0056FF3E /* 1.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 1.map; path = Resource/1.map; sourceTree = "<group>"; };
+		078333DA1943EE2B0056FF3E /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = Resource/2.png; sourceTree = "<group>"; };
+		078333DB1943EE2B0056FF3E /* botones.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = botones.png; path = Resource/botones.png; sourceTree = "<group>"; };
+		078333DC1943EE2B0056FF3E /* Brure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Brure.png; path = Resource/Brure.png; sourceTree = "<group>"; };
+		078333DD1943EE2B0056FF3E /* Chara.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Chara.png; path = Resource/Chara.png; sourceTree = "<group>"; };
+		078333DE1943EE2B0056FF3E /* editor copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "editor copy.png"; path = "Resource/editor copy.png"; sourceTree = "<group>"; };
+		078333DF1943EE2B0056FF3E /* editor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = editor.png; path = Resource/editor.png; sourceTree = "<group>"; };
+		078333E01943EE2B0056FF3E /* editorFull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = editorFull.png; path = Resource/editorFull.png; sourceTree = "<group>"; };
+		078333E11943EE2B0056FF3E /* Efis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Efis.png; path = Resource/Efis.png; sourceTree = "<group>"; };
+		078333E21943EE2B0056FF3E /* Fira.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Fira.png; path = Resource/Fira.png; sourceTree = "<group>"; };
+		078333E31943EE2B0056FF3E /* fondo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fondo.png; path = Resource/fondo.png; sourceTree = "<group>"; };
+		078333E41943EE2B0056FF3E /* interfaz.fla */ = {isa = PBXFileReference; lastKnownFileType = file; name = interfaz.fla; path = Resource/interfaz.fla; sourceTree = "<group>"; };
+		078333E51943EE2B0056FF3E /* maximize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maximize.png; path = Resource/maximize.png; sourceTree = "<group>"; };
+		078333E61943EE2B0056FF3E /* minimize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = minimize.png; path = Resource/minimize.png; sourceTree = "<group>"; };
+		078333E71943EE2B0056FF3E /* quit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = quit.png; path = Resource/quit.png; sourceTree = "<group>"; };
+		078333E81943EE2B0056FF3E /* titleBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = titleBar.png; path = Resource/titleBar.png; sourceTree = "<group>"; };
+		078333E91943EE2B0056FF3E /* win.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = win.png; path = Resource/win.png; sourceTree = "<group>"; };
+		078333EA1943EE2B0056FF3E /* yoshi.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = yoshi.bmp; path = Resource/yoshi.bmp; sourceTree = "<group>"; };
+		078333EB1943EE2B0056FF3E /* yoshi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yoshi.png; path = Resource/yoshi.png; sourceTree = "<group>"; };
+		07C00587193EB21F009B1490 /* class_windows.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = class_windows.h; sourceTree = "<group>"; };
+		07C00588193EB4BC009B1490 /* SDL_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_image.framework; path = ../../../../../SDL_image.framework; sourceTree = "<group>"; };
+		07C00589193EB4BC009B1490 /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = ../../../../../SDL.framework; sourceTree = "<group>"; };
 		9C93E39113942B5A0096FAB3 /* HelloSDL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloSDL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C93E3BA13942F620096FAB3 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -42,10 +85,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				075EB0511910AB6900A637C2 /* SDL_image.framework in Frameworks */,
+				07C0058A193EB4BC009B1490 /* SDL_image.framework in Frameworks */,
+				07C0058B193EB4BC009B1490 /* SDL.framework in Frameworks */,
 				075EB04F1910AB5D00A637C2 /* Cocoa.framework in Frameworks */,
 				072C8B2E1907683C00E324D4 /* OpenGL.framework in Frameworks */,
-				072C8B271907527100E324D4 /* SDL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +101,7 @@
 				0705E8761912080800901C42 /* main.cpp */,
 				0721AE6419151F0700FD551D /* Window.h */,
 				0721AE6519152FB500FD551D /* Surface.h */,
+				07C00587193EB21F009B1490 /* class_windows.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -78,16 +122,45 @@
 			name = SDL;
 			sourceTree = "<group>";
 		};
+		078334011943EE320056FF3E /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				078333D71943EE2B0056FF3E /* 1.png */,
+				078333D81943EE2B0056FF3E /* 1.area */,
+				078333D91943EE2B0056FF3E /* 1.map */,
+				078333DA1943EE2B0056FF3E /* 2.png */,
+				078333DB1943EE2B0056FF3E /* botones.png */,
+				078333DC1943EE2B0056FF3E /* Brure.png */,
+				078333DD1943EE2B0056FF3E /* Chara.png */,
+				078333DE1943EE2B0056FF3E /* editor copy.png */,
+				078333DF1943EE2B0056FF3E /* editor.png */,
+				078333E01943EE2B0056FF3E /* editorFull.png */,
+				078333E11943EE2B0056FF3E /* Efis.png */,
+				078333E21943EE2B0056FF3E /* Fira.png */,
+				078333E31943EE2B0056FF3E /* fondo.png */,
+				078333E41943EE2B0056FF3E /* interfaz.fla */,
+				078333E51943EE2B0056FF3E /* maximize.png */,
+				078333E61943EE2B0056FF3E /* minimize.png */,
+				078333E71943EE2B0056FF3E /* quit.png */,
+				078333E81943EE2B0056FF3E /* titleBar.png */,
+				078333E91943EE2B0056FF3E /* win.png */,
+				078333EA1943EE2B0056FF3E /* yoshi.bmp */,
+				078333EB1943EE2B0056FF3E /* yoshi.png */,
+			);
+			name = resource;
+			sourceTree = "<group>";
+		};
 		9C93E38613942B590096FAB3 = {
 			isa = PBXGroup;
 			children = (
 				075EB06E1910ABB600A637C2 /* Headers */,
 				075EB06F1910ABD300A637C2 /* SDL */,
-				075EB0501910AB6900A637C2 /* SDL_image.framework */,
-				075EB04E1910AB5D00A637C2 /* Cocoa.framework */,
-				072C8B261907527100E324D4 /* SDL.framework */,
-				9C93E3BA13942F620096FAB3 /* OpenGL.framework */,
 				9C93E39213942B5A0096FAB3 /* Products */,
+				075EB04E1910AB5D00A637C2 /* Cocoa.framework */,
+				9C93E3BA13942F620096FAB3 /* OpenGL.framework */,
+				07C00588193EB4BC009B1490 /* SDL_image.framework */,
+				07C00589193EB4BC009B1490 /* SDL.framework */,
+				078334011943EE320056FF3E /* resource */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +223,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				078333F11943EE2B0056FF3E /* Brure.png in Resources */,
+				078333FB1943EE2B0056FF3E /* minimize.png in Resources */,
+				078333FC1943EE2B0056FF3E /* quit.png in Resources */,
+				078333EE1943EE2B0056FF3E /* 1.map in Resources */,
+				078333F21943EE2B0056FF3E /* Chara.png in Resources */,
+				078333F61943EE2B0056FF3E /* Efis.png in Resources */,
+				078333FA1943EE2B0056FF3E /* maximize.png in Resources */,
+				078333ED1943EE2B0056FF3E /* 1.area in Resources */,
+				078333FD1943EE2B0056FF3E /* titleBar.png in Resources */,
+				078334001943EE2B0056FF3E /* yoshi.png in Resources */,
+				078333F31943EE2B0056FF3E /* editor copy.png in Resources */,
+				078333F51943EE2B0056FF3E /* editorFull.png in Resources */,
+				078333F81943EE2B0056FF3E /* fondo.png in Resources */,
+				078333F41943EE2B0056FF3E /* editor.png in Resources */,
+				078333EF1943EE2B0056FF3E /* 2.png in Resources */,
+				078333F91943EE2B0056FF3E /* interfaz.fla in Resources */,
+				078333FE1943EE2B0056FF3E /* win.png in Resources */,
+				078333F71943EE2B0056FF3E /* Fira.png in Resources */,
+				078333F01943EE2B0056FF3E /* botones.png in Resources */,
+				078333FF1943EE2B0056FF3E /* yoshi.bmp in Resources */,
+				078333EC1943EE2B0056FF3E /* 1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

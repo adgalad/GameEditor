@@ -7,7 +7,7 @@
 int SDL_main (int argc, char **argv)
 {
     
-    Window win;
+    Editor win;
     win.OnInit();
     
     
